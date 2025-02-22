@@ -22,7 +22,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                she 'test' -f build/index.html
+                sh 'test' -f build/index.html
             }
         }
     }

@@ -1,8 +1,9 @@
 pipeline {
     agent any
-    envionment {
+    environment {
         // Set the environment variables for Netlify
         //NETLIFY_SITE_ID = 'your-site-id'
+        NETLIFY_AUTH_TOKEN = credentials('netlify-token')
     }
     stages {
         stage('Build') {
@@ -49,6 +50,7 @@ pipeline {
                     npm install netlify-cli
                     node_modules/.bin/netlify --version
                     echo "Deploying to Netlify, Site ID: Add in late"
+                    node_modules/.bin/netlify status
                 '''
             }
         }
